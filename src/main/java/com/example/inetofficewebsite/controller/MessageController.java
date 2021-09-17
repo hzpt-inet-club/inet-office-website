@@ -2,6 +2,7 @@ package com.example.inetofficewebsite.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.inetofficewebsite.pojo.Message;
+import com.example.inetofficewebsite.result.Result;
 import com.example.inetofficewebsite.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,15 +23,15 @@ public class MessageController {
     MessageService messageService;
 
     @PutMapping(value = "/addMessage")
-    public Integer addMessage(@RequestParam("user_id") String userId,
-                           @RequestParam("message_text") String messageText){
-        return messageService.addMessage(userId,messageText);
+    public Result addMessage(@RequestParam("user_id") String userId,
+                             @RequestParam("message_text") String messageText){
+        return new Result().result200(messageService.addMessage(userId,messageText));
     }
 
     @GetMapping(value = "/listMessages")
-    public IPage<Message> addMessage(@RequestParam("current_page") Integer currentPage,
+    public Result addMessage(@RequestParam("current_page") Integer currentPage,
                                      @RequestParam("page_size") Integer pageSize){
-        return messageService.listMessages(currentPage,pageSize);
+        return new Result().result200(messageService.listMessages(currentPage,pageSize));
     }
 
 

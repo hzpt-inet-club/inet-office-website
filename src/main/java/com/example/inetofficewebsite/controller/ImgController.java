@@ -1,5 +1,6 @@
 package com.example.inetofficewebsite.controller;
 
+import com.example.inetofficewebsite.result.Result;
 import com.example.inetofficewebsite.utils.ImgFileUtil;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,7 +26,7 @@ public class ImgController {
      * @throws IOException 抛出io流异常
      */
     @GetMapping("/addImg")
-    public Object addImg(@RequestParam("img_file") MultipartFile imgFile) throws IOException {
+    public Result addImg(@RequestParam("img_file") MultipartFile imgFile) throws IOException {
         String path = "src/main/resources/static/img";
         File imgFolder=new File(path);
         if (!imgFolder.exists())
@@ -40,7 +41,7 @@ public class ImgController {
         }
         fis.close();
         fos.close();
-        return ImgFileUtil.FileImgPath(path);
+        return new Result().result200(ImgFileUtil.FileImgPath(path));
     }
 
     /**
@@ -49,10 +50,10 @@ public class ImgController {
      * @return 返回删除后剩余图片的路径
      */
     @DeleteMapping("/deleteImg")
-    public Object deleteImg(@RequestParam("img_path")String imgPath){
+    public Result deleteImg(@RequestParam("img_path")String imgPath){
         String path = "src/main/resources/static/img";
         File file=new File(imgPath);
         System.out.println(file.delete());
-        return ImgFileUtil.FileImgPath(path);
+        return new Result().result200(ImgFileUtil.FileImgPath(path));
     }
 }
