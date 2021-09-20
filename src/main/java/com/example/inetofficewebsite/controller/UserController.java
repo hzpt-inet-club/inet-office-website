@@ -1,7 +1,5 @@
 package com.example.inetofficewebsite.controller;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.example.inetofficewebsite.pojo.User;
 import com.example.inetofficewebsite.result.Result;
 import com.example.inetofficewebsite.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
