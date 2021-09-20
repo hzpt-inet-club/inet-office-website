@@ -1,6 +1,7 @@
 function uploadpic() {
     var formData = new FormData();
     var file = document.getElementById('file').files[0];
+    console.log(file);
     // var id_token = $('#id_token').val();
     formData.append("img_file", file);
     // formData.append("id_token", id_token);
