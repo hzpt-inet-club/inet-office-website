@@ -25,7 +25,7 @@ public class ImgController {
      * @return 返回路径，用于前端删除图片
      * @throws IOException 抛出io流异常
      */
-    @GetMapping("/addImg")
+    @PostMapping("/addImg")
     public Result addImg(@RequestParam("img_file") MultipartFile imgFile) throws IOException {
         String path = "src/main/resources/static/img";
         File imgFolder=new File(path);
